@@ -1,0 +1,695 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="生命科学・テクノロジー・事業を横断し、健康寿命を支える社会を目指す鹿角謙人のポートフォリオ。">
+  <meta name="theme-color" content="#0e0b21">
+  <title>鹿角 謙人 / Kento Kaduno</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Noto+Sans+JP:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #0e0b21;
+      --navy: #12173f;
+      --deep: #0b1b2b;
+      --indigo: #312265;
+      --purple: #442b83;
+      --lavender: #887ddd;
+      --blue: #7491d0;
+      --teal: #3ec5ad;
+      --magenta: #c94eb9;
+      --white: #ffffff;
+      --cloud: #f8faff;
+      --mist: #edf2f6;
+      --line: #d9e4e8;
+      --slate: #536673;
+      --text: #112232;
+      --wrap: min(1320px, calc(100% - 96px));
+      --display: "Inter", "Noto Sans JP", sans-serif;
+      --body: "Noto Sans JP", "Inter", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--cloud);
+      color: var(--text);
+      font-family: var(--body);
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+    body.menu-open { overflow: hidden; }
+    img { display: block; width: 100%; }
+    a { color: inherit; }
+    button { font: inherit; }
+    ::selection { color: var(--ink); background: var(--teal); }
+    .wrap { width: var(--wrap); margin-inline: auto; }
+    .skip-link {
+      position: fixed; left: 16px; top: -80px; z-index: 100;
+      padding: 10px 16px; background: var(--white); color: var(--ink);
+      transition: top .2s ease;
+    }
+    .skip-link:focus { top: 16px; }
+
+    .nav-shell {
+      position: absolute; inset: 0 0 auto; z-index: 20;
+      color: var(--white); border-bottom: 1px solid rgba(255,255,255,.14);
+    }
+    .nav {
+      height: 88px; display: flex; align-items: center; justify-content: space-between;
+    }
+    .brand {
+      color: inherit; text-decoration: none; font: 700 17px/1 var(--display);
+      letter-spacing: -.02em;
+    }
+    .brand span { margin-left: 10px; color: rgba(255,255,255,.52); font-weight: 500; }
+    .nav-links { display: flex; align-items: center; gap: clamp(18px, 2vw, 34px); }
+    .nav-links a {
+      text-decoration: none; font: 600 11px/1 var(--display); letter-spacing: .12em;
+      text-transform: uppercase; color: rgba(255,255,255,.75); transition: color .2s ease;
+    }
+    .nav-links a:hover, .nav-links a:focus-visible { color: var(--teal); }
+    .nav-links .nav-contact { color: var(--white); border-bottom: 1px solid var(--teal); padding-bottom: 5px; }
+    .menu-toggle {
+      display: none; padding: 0; border: 0; background: none; color: var(--white);
+      letter-spacing: .1em; text-transform: uppercase; font: 600 11px/1 var(--display);
+    }
+
+    .hero {
+      position: relative; min-height: 100svh; overflow: hidden; color: var(--white);
+      background: linear-gradient(132deg, var(--ink) 0%, var(--navy) 53%, var(--indigo) 78%, var(--purple) 100%);
+    }
+    .hero::before {
+      content: ""; position: absolute; width: 48vw; height: 48vw; right: -12vw; top: -20vw;
+      border: 1px solid rgba(136,125,221,.28); border-radius: 50%;
+      box-shadow: 0 0 90px rgba(201,78,185,.09);
+    }
+    .hero-grid {
+      width: var(--wrap); min-height: 100svh; margin-inline: auto; padding-top: 88px;
+      display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(360px, .92fr); align-items: end;
+      gap: clamp(40px, 6vw, 100px);
+    }
+    .hero-copy { padding: 12vh 0 9vh; position: relative; z-index: 2; }
+    .kicker, .section-label {
+      display: flex; align-items: center; gap: 12px;
+      margin: 0 0 28px; font: 700 11px/1.4 var(--display); letter-spacing: .16em; text-transform: uppercase;
+    }
+    .kicker { color: var(--teal); }
+    .kicker::before { content: ""; width: 26px; height: 2px; background: linear-gradient(90deg,var(--teal),var(--lavender),var(--magenta)); }
+    .section-label::before { content: ""; width: 2px; height: 24px; background: linear-gradient(180deg,var(--teal),var(--lavender),var(--magenta)); }
+    .hero-name {
+      margin: 0; font: 800 clamp(64px, 8.4vw, 132px)/.82 var(--display);
+      letter-spacing: -.075em; text-transform: uppercase;
+    }
+    .hero-name .jp {
+      display: block; margin-top: 26px; font-family: var(--body); font-size: clamp(23px, 2vw, 32px);
+      line-height: 1; letter-spacing: .15em; font-weight: 600;
+    }
+    .hero-lead {
+      max-width: 580px; margin: 42px 0 0; font-size: clamp(16px, 1.3vw, 20px);
+      color: rgba(255,255,255,.73); line-height: 1.9;
+    }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 10px 24px; margin-top: 34px; font-size: 13px; color: rgba(255,255,255,.58); }
+    .socials { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 36px; }
+    .socials a {
+      width: 42px; height: 42px; display: grid; place-items: center; border: 1px solid rgba(255,255,255,.24);
+      border-radius: 50%; text-decoration: none; transition: border-color .2s ease, background .2s ease;
+    }
+    .socials img { width: 17px; height: 17px; object-fit: contain; opacity: .82; }
+    .socials a:hover, .socials a:focus-visible { border-color: var(--teal); background: rgba(62,197,173,.12); }
+    .hero-photo { position: relative; height: calc(100svh - 132px); min-height: 610px; align-self: end; overflow: hidden; }
+    .hero-photo::after {
+      content: ""; position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(14,11,33,.05), rgba(14,11,33,.1) 58%, rgba(14,11,33,.92));
+      pointer-events: none;
+    }
+    .hero-photo img { height: 100%; object-fit: cover; object-position: 50% 35%; filter: saturate(.82) contrast(1.04); }
+    .photo-index {
+      position: absolute; z-index: 2; right: 20px; bottom: 26px;
+      color: rgba(255,255,255,.76); font: 500 10px/1.5 var(--display); letter-spacing: .14em; text-transform: uppercase;
+      writing-mode: vertical-rl;
+    }
+    .scroll-cue {
+      position: absolute; z-index: 3; left: 48px; bottom: 34px; display: flex; align-items: center; gap: 14px;
+      color: rgba(255,255,255,.45); font: 600 10px/1 var(--display); letter-spacing: .14em; text-transform: uppercase;
+    }
+    .scroll-cue::before { content: ""; width: 42px; height: 1px; background: linear-gradient(90deg, var(--teal), var(--lavender)); }
+
+    .vision {
+      position: relative; color: var(--white); background: var(--ink); overflow: hidden;
+    }
+    .vision-grid { display: grid; grid-template-columns: 1.08fr .92fr; min-height: 960px; }
+    .vision-copy {
+      padding: 128px max(48px, calc((100vw - 1320px) / 2)) 120px max(48px, calc((100vw - 1320px) / 2));
+      padding-right: clamp(54px, 6vw, 110px); display: flex; flex-direction: column; justify-content: center;
+    }
+    .section-label { color: var(--lavender); }
+    .vision-title {
+      max-width: 700px; margin: 0 0 40px; font-size: clamp(50px, 5.25vw, 82px); line-height: 1.12;
+      letter-spacing: -.055em; font-weight: 700;
+    }
+    .vision-lead { max-width: 680px; margin: 0 0 44px; color: rgba(255,255,255,.82); font-size: 18px; line-height: 2; }
+    .vision-points { display: grid; gap: 0; max-width: 670px; }
+    .vision-point { display: grid; grid-template-columns: 92px 1fr; gap: 26px; padding: 23px 0; border-top: 1px solid rgba(255,255,255,.14); }
+    .vision-point:last-child { border-bottom: 1px solid rgba(255,255,255,.14); }
+    .vision-point h3 { margin: 4px 0 0; color: var(--teal); font: 700 11px/1.4 var(--display); letter-spacing: .13em; }
+    .vision-point p { margin: 0; color: rgba(255,255,255,.67); font-size: 14px; line-height: 1.95; }
+    .vision-photo { min-height: 720px; position: relative; overflow: hidden; }
+    .vision-photo img { height: 100%; object-fit: cover; filter: saturate(.65) contrast(1.08); }
+    .vision-photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(14,11,33,.48), rgba(14,11,33,.02) 38%, rgba(68,43,131,.14)); }
+    .photo-caption {
+      position: absolute; z-index: 2; left: 34px; bottom: 30px; margin: 0; color: rgba(255,255,255,.7);
+      font: 500 10px/1.6 var(--display); letter-spacing: .14em; text-transform: uppercase;
+    }
+
+    .approach {
+      position: relative; padding: 138px 0 146px; color: var(--white); overflow: hidden;
+      background: linear-gradient(145deg, var(--ink) 0%, var(--navy) 58%, var(--indigo) 100%);
+    }
+    .approach::after { content: ""; position: absolute; width: 46vw; height: 46vw; right: -23vw; top: 18%; border-radius: 50%; border: 1px solid rgba(136,125,221,.22); box-shadow: 0 0 90px rgba(201,78,185,.08); pointer-events: none; }
+    .approach-intro { max-width: 860px; padding-bottom: 102px; }
+    .approach-intro h2 {
+      margin: 0 0 34px; font: 800 clamp(52px, 7vw, 104px)/.95 var(--display); letter-spacing: -.065em;
+    }
+    .approach-intro p { max-width: 680px; margin: 0; color: rgba(255,255,255,.7); font-size: 18px; }
+    .approach-type { position: relative; z-index: 1; color: var(--white); padding-top: 78px; border-top: 3px solid transparent; border-image: linear-gradient(90deg,var(--teal),var(--lavender),var(--magenta)) 1; }
+    .approach-word {
+      display: grid; grid-template-columns: 46px minmax(300px,.82fr) minmax(330px,1.18fr); gap: 28px; align-items: center;
+      padding: 30px 0; border-top: 1px solid rgba(255,255,255,.17);
+    }
+    .approach-word:last-of-type { border-bottom: 1px solid rgba(255,255,255,.17); }
+    .approach-word .num { color: rgba(255,255,255,.42); font: 600 11px/1 var(--display); letter-spacing: .12em; }
+    .approach-word .jp { color: rgba(255,255,255,.64); font-size: 14px; line-height: 1.85; text-transform: none; }
+    .approach-word strong { white-space: nowrap; font: 800 clamp(32px, 4.1vw, 60px)/1 var(--display); letter-spacing: -.055em; }
+    .approach-logic { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 72px; }
+    .logic-card { position: relative; min-height: 460px; overflow: hidden; background: var(--deep); }
+    .logic-card img { position: absolute; inset: 0; height: 100%; object-fit: cover; filter: saturate(.65) contrast(1.08); }
+    .logic-card::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(14,11,33,.16), rgba(14,11,33,.9)); }
+    .logic-copy { position: absolute; z-index: 2; inset: auto 34px 32px; }
+    .logic-copy span { display: block; margin-bottom: 12px; color: var(--teal); font: 700 11px/1.4 var(--display); letter-spacing: .14em; }
+    .logic-card:last-child .logic-copy span { color: #e49edb; }
+    .logic-copy h3 { margin: 0 0 12px; font-size: clamp(26px,3vw,42px); line-height: 1.25; }
+    .logic-copy p { max-width: 500px; margin: 0; color: rgba(255,255,255,.7); font-size: 14px; }
+    .logic-meet { position: absolute; z-index: 3; left: 50%; top: 50%; transform: translate(-50%,-50%); width: 104px; aspect-ratio: 1; display: grid; place-items: center; border-radius: 50%; background: linear-gradient(135deg,var(--teal),var(--lavender),var(--magenta)); box-shadow: 0 14px 60px rgba(14,11,33,.48); font: 700 10px/1.3 var(--display); letter-spacing: .08em; text-align: center; }
+
+    .light-section { padding: 138px 0; background: var(--cloud); }
+    .section-head { position: relative; display: flex; justify-content: space-between; align-items: end; gap: 60px; margin-bottom: 68px; }
+    .section-head .section-label { color: var(--indigo); margin-bottom: 22px; }
+    .section-head h2 {
+      margin: 0; font: 800 clamp(52px, 6.4vw, 92px)/.95 var(--display); letter-spacing: -.06em;
+    }
+    .section-head p { max-width: 430px; margin: 0; color: var(--slate); font-size: 15px; }
+
+    .projects-section { padding-top: 132px; background: var(--white); }
+    .projects-section > .wrap { margin-bottom: 66px; }
+    .project { width: var(--wrap); margin: 0 auto 28px; display: grid; grid-template-columns: 1.08fr .92fr; min-height: 0; background: var(--mist); }
+    .project:nth-child(even) { grid-template-columns: .92fr 1.08fr; background: var(--cloud); }
+    .project:nth-child(even) .project-photo { order: 2; }
+    .project-photo { position: relative; min-height: 0; aspect-ratio: 16 / 9; align-self: center; overflow: hidden; }
+    .project-photo img { height: 100%; object-fit: cover; transition: transform .8s cubic-bezier(.2,.7,.2,1); }
+    .project:hover .project-photo img { transform: scale(1.025); }
+    .project-photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(14,11,33,.08), rgba(49,34,101,.2)); }
+    .project-copy { padding: clamp(42px, 5vw, 74px); display: flex; flex-direction: column; justify-content: center; }
+    .project-no { width: fit-content; color: transparent; background: linear-gradient(90deg,var(--teal),var(--lavender),var(--magenta)); -webkit-background-clip: text; background-clip: text; font: 700 11px/1 var(--display); letter-spacing: .14em; }
+    .project-brand { display: flex; align-items: center; gap: 16px; margin: 28px 0 12px; }
+    .project-mark { width: 72px; height: 72px; padding: 8px; flex: 0 0 auto; object-fit: contain; border-radius: 16px; background: var(--white); border: 1px solid var(--line); }
+    .project h3 { margin: 0; font: 800 clamp(48px, 5.6vw, 82px)/.9 var(--display); letter-spacing: -.065em; }
+    .project-role { margin: 0 0 44px; color: var(--slate); font-size: 13px; }
+    .project-statement { margin: 0; max-width: 500px; font-size: clamp(20px, 2vw, 28px); line-height: 1.65; font-weight: 600; }
+    .text-link {
+      width: fit-content; margin-top: 48px; padding-bottom: 8px; text-decoration: none; border-bottom: 1px solid var(--text);
+      font: 700 11px/1 var(--display); letter-spacing: .13em;
+    }
+    .text-link:hover, .text-link:focus-visible { color: var(--indigo); border-color: var(--teal); }
+
+    .news-section { padding-top: 138px; background: var(--cloud); }
+    .news-list { border-top: 1px solid #bfcbd2; }
+    .news-entry { border-bottom: 1px solid #bfcbd2; }
+    .news-entry summary { list-style: none; cursor: pointer; }
+    .news-entry summary::-webkit-details-marker { display: none; }
+    .news-item { display: grid; grid-template-columns: 120px 110px 1fr 24px; gap: 26px; align-items: center; padding: 27px 0; }
+    .news-entry summary:hover .news-title { color: var(--indigo); }
+    .news-date, .news-cat { font: 600 11px/1.4 var(--display); letter-spacing: .08em; color: var(--slate); }
+    .news-cat { color: var(--indigo); }
+    .news-title { font-size: 17px; font-weight: 600; transition: color .2s ease; }
+    .news-arrow { font-size: 20px; transition: transform .2s ease; }
+    .news-entry[open] .news-arrow { transform: rotate(45deg); }
+    .news-detail { max-width: 850px; margin: -4px 24px 0 256px; padding: 0 0 30px; color: var(--slate); font-size: 14px; }
+    .news-detail p { margin: 0 0 16px; }
+    .news-source { font: 700 11px/1 var(--display); letter-spacing: .11em; text-decoration: none; border-bottom: 1px solid var(--indigo); padding-bottom: 5px; color: var(--indigo); }
+    .mock-note { margin: 22px 0 0; color: var(--slate); font-size: 11px; }
+
+    .skills-section { background: var(--white); }
+    .skill-row {
+      display: grid; grid-template-columns: 58px minmax(340px,.78fr) minmax(300px,1.22fr); gap: 24px; align-items: center;
+      padding: 46px 0; border-top: 1px solid #bfcbd2;
+    }
+    .skill-row:last-child { border-bottom: 1px solid #bfcbd2; }
+    .skill-num { align-self: start; padding-top: 9px; color: var(--slate); font: 600 11px/1 var(--display); }
+    .skill-name { margin: 0; white-space: nowrap; font: 800 clamp(36px, 4vw, 60px)/1 var(--display); letter-spacing: -.055em; }
+    .skill-evidence { padding-left: 24px; border-left: 1px solid var(--line); }
+    .skill-evidence p { margin: 0; color: var(--slate); font-size: 14px; }
+    .skill-evidence strong { display: block; color: var(--text); font: 700 18px/1.4 var(--display); }
+
+    .journey-section { background: var(--cloud); overflow: hidden; }
+    .journey { display: grid; gap: 88px; position: relative; }
+    .journey::before { content: ""; position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; background: linear-gradient(var(--teal), var(--lavender), var(--magenta)); opacity: .55; }
+    .journey-item { width: calc(50% + 1px); display: grid; grid-template-columns: 1fr 48px; gap: 30px; align-items: center; }
+    .journey-item:nth-child(even) { margin-left: auto; grid-template-columns: 48px 1fr; }
+    .journey-item:nth-child(even) .journey-card { order: 2; }
+    .journey-item.reveal:nth-child(odd) { transform: translateX(-36px); }
+    .journey-item.reveal:nth-child(even) { transform: translateX(36px); }
+    .journey-item.reveal.is-visible { transform: translateX(0); }
+    .journey-dot { width: 11px; height: 11px; margin: auto; border-radius: 50%; background: var(--cloud); border: 3px solid var(--lavender); position: relative; z-index: 2; opacity: 0; transform: scale(.25); transition: opacity .45s .28s ease, transform .55s .28s cubic-bezier(.2,.8,.2,1.25); }
+    .journey-item.is-visible .journey-dot { opacity: 1; transform: scale(1); }
+    .journey-card { display: grid; grid-template-columns: minmax(180px,.9fr) 1.1fr; background: var(--white); min-height: 250px; }
+    .journey-photo { min-height: 250px; overflow: hidden; }
+    .journey-photo img { height: 100%; object-fit: cover; filter: saturate(.67); transform: scale(1.055); transition: transform 1.15s .12s cubic-bezier(.2,.7,.2,1); }
+    .journey-item.is-visible .journey-photo img { transform: scale(1); }
+    .journey-photo.journey-mark { display: grid; place-items: center; padding: 44px; background: linear-gradient(135deg,var(--ink),var(--indigo)); }
+    .journey-photo.journey-mark img { width: min(150px,75%); height: auto; object-fit: contain; filter: none; transform: scale(.88); }
+    .journey-item.is-visible .journey-photo.journey-mark img { transform: scale(1); }
+    .journey-copy { padding: 28px; align-self: center; }
+    .journey-copy time { color: var(--lavender); font: 700 10px/1.4 var(--display); letter-spacing: .13em; }
+    .journey-copy h3 { margin: 12px 0 10px; font: 800 clamp(24px, 2.6vw, 38px)/1.04 var(--display); letter-spacing: -.04em; }
+    .journey-copy p { margin: 0; color: var(--slate); font-size: 13px; }
+
+    .photo-break { padding: 34px 0 42px; overflow: hidden; background: var(--white); }
+    .photo-break-head { width: var(--wrap); margin: 0 auto 16px; display: flex; justify-content: space-between; align-items: center; }
+    .photo-break-head span { color: var(--slate); font: 700 10px/1 var(--display); letter-spacing: .14em; text-transform: uppercase; }
+    .photo-break-hint { opacity: .58; }
+    .photo-break-scroll { overflow: hidden; scrollbar-width: none; }
+    .photo-break-scroll::-webkit-scrollbar { display: none; }
+    .photo-break-track { display: flex; width: max-content; animation: gallery-marquee 44s linear infinite; will-change: transform; }
+    .photo-break-scroll:hover .photo-break-track, .photo-break-scroll:focus-within .photo-break-track { animation-play-state: paused; }
+    .photo-group { display: flex; gap: 12px; padding: 0 12px 0 max(18px,calc((100vw - 1320px)/2)); }
+    .photo-break figure { flex: 0 0 clamp(300px,38vw,560px); margin: 0; aspect-ratio: 16 / 10; overflow: hidden; }
+    .photo-break img { height: 100%; object-fit: cover; filter: saturate(.74) contrast(1.03); }
+    @keyframes gallery-marquee { to { transform: translateX(-50%); } }
+
+    .contact {
+      position: relative; min-height: 880px; display: grid; align-items: center; overflow: hidden; color: var(--white);
+      background: linear-gradient(128deg, var(--ink), var(--navy) 58%, var(--purple));
+    }
+    .contact .wrap { position: relative; z-index: 2; padding: 124px 0; }
+    .contact-grid { display: grid; grid-template-columns: minmax(0,1.08fr) minmax(360px,.92fr); gap: clamp(48px,7vw,110px); align-items: center; }
+    .contact h2 { max-width: 760px; margin: 0; font: 800 clamp(58px, 7.6vw, 112px)/.86 var(--display); letter-spacing: -.075em; }
+    .contact h2 span { display: block; color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,.5); }
+    .contact-intro { max-width: 570px; margin: 42px 0 0; color: rgba(255,255,255,.7); font-size: 15px; }
+    .contact-visual { height: 620px; overflow: hidden; }
+    .contact-visual img { height: 100%; object-fit: cover; object-position: 50% 50%; filter: saturate(.78) contrast(1.05); }
+    .contact-action { display: inline-flex; align-items: center; justify-content: space-between; gap: 48px; min-width: 310px; margin-top: 42px; padding: 18px 22px; background: var(--teal); color: var(--ink); text-decoration: none; font-weight: 700; }
+    .contact-action:hover, .contact-action:focus-visible { background: var(--white); }
+    .contact-meta { display: grid; gap: 8px; max-width: 570px; margin-top: 28px; padding-top: 22px; border-top: 1px solid rgba(255,255,255,.2); color: rgba(255,255,255,.62); font-size: 12px; }
+    .footer {
+      color: rgba(255,255,255,.56); background: var(--ink); border-top: 1px solid rgba(255,255,255,.12); padding: 30px 0;
+    }
+    .footer-row { display: flex; justify-content: space-between; gap: 20px; font: 500 10px/1.5 var(--display); letter-spacing: .08em; text-transform: uppercase; }
+
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity .75s ease, transform .75s cubic-bezier(.2,.7,.2,1); }
+    .reveal.is-visible { opacity: 1; transform: none; }
+
+    @media (max-width: 1020px) {
+      :root { --wrap: min(100% - 48px, 860px); }
+      .nav-links { gap: 18px; }
+      .nav-links a:not(.nav-contact) { display: none; }
+      .hero-grid { grid-template-columns: 1fr 42%; gap: 42px; }
+      .hero-name { font-size: clamp(60px, 9.5vw, 96px); }
+      .vision-grid { min-height: 0; }
+      .vision-copy { padding-left: 24px; padding-right: 48px; }
+      .vision-point { grid-template-columns: 78px 1fr; }
+      .project, .project:nth-child(even) { grid-template-columns: 1fr 1fr; min-height: 0; }
+      .project-copy { padding: 42px; }
+      .approach-word { grid-template-columns: 40px 280px 1fr; gap: 18px; }
+      .news-item { grid-template-columns: 94px 80px 1fr 20px; gap: 18px; }
+      .news-detail { margin-left: 192px; }
+      .skill-row { grid-template-columns: 48px minmax(280px,.9fr) minmax(0,1.1fr); gap: 18px; }
+      .journey-card { grid-template-columns: 1fr; }
+      .journey-photo { min-height: 180px; }
+    }
+
+    @media (max-width: 760px) {
+      :root { --wrap: calc(100% - 36px); }
+      .nav { height: 70px; }
+      .brand { font-size: 15px; }
+      .brand span { display: none; }
+      .nav-links {
+        display: none; position: fixed; inset: 0; background: rgba(14,11,33,.98); padding: 110px 26px 50px;
+        flex-direction: column; align-items: flex-start; gap: 28px;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links a, .nav-links a:not(.nav-contact) { display: block; font-size: 26px; letter-spacing: -.02em; text-transform: none; }
+      .menu-toggle { display: block; position: relative; z-index: 2; }
+      .hero-grid { min-height: auto; padding-top: 70px; display: flex; flex-direction: column; width: 100%; gap: 0; }
+      .hero-copy { width: var(--wrap); margin-inline: auto; padding: 86px 0 52px; }
+      .hero-name { font-size: clamp(58px, 19vw, 88px); }
+      .hero-name .jp { font-size: 21px; margin-top: 22px; }
+      .hero-lead { margin-top: 32px; font-size: 15px; }
+      .hero-meta { display: grid; gap: 4px; }
+      .hero-photo { width: calc(100% - 36px); height: 72svh; min-height: 520px; margin-left: auto; }
+      .scroll-cue { display: none; }
+      .vision-grid { grid-template-columns: 1fr; }
+      .vision-copy { padding: 100px 18px 80px; }
+      .vision-title { margin-bottom: 48px; font-size: clamp(43px, 13vw, 64px); }
+      .vision-point { grid-template-columns: 1fr; gap: 8px; }
+      .vision-photo { min-height: 70svh; }
+      .approach { padding: 100px 0 110px; background: linear-gradient(145deg,var(--ink),var(--navy) 60%,var(--indigo)); }
+      .approach-intro { padding-bottom: 84px; }
+      .approach-intro h2 { font-size: 52px; }
+      .approach-type { padding-top: 68px; }
+      .approach-word { grid-template-columns: 36px 1fr; gap: 10px; }
+      .approach-word .jp { grid-column: 2; padding-top: 2px; }
+      .approach-word strong { font-size: clamp(36px, 11.4vw, 56px); }
+      .approach-logic { grid-template-columns: 1fr; }
+      .logic-card { min-height: 420px; }
+      .logic-meet { position: relative; left: auto; top: auto; transform: none; width: 86px; margin: -52px auto -52px; }
+      .light-section { padding: 100px 0; }
+      .section-head { display: block; margin-bottom: 48px; }
+      .section-head h2 { font-size: 50px; }
+      .section-head p { margin-top: 24px; }
+      .projects-section { padding-top: 96px; }
+      .project, .project:nth-child(even) { grid-template-columns: 1fr; min-height: 0; }
+      .project:nth-child(even) .project-photo { order: initial; }
+      .project-photo { min-height: 0; aspect-ratio: 16 / 9; }
+      .project-copy { padding: 58px 18px 70px; }
+      .project h3 { font-size: 52px; }
+      .project-mark { width: 60px; height: 60px; }
+      .news-item { grid-template-columns: 76px 1fr 20px; gap: 12px; }
+      .news-title { font-size: 14px; line-height: 1.6; }
+      .news-cat { display: none; }
+      .news-detail { margin: -4px 34px 0 88px; padding-bottom: 26px; }
+      .skill-row { grid-template-columns: 36px 1fr; gap: 12px; padding: 34px 0; }
+      .skill-name { white-space: normal; font-size: 38px; }
+      .skill-evidence { grid-column: 2; padding: 16px 0 0; border-left: 0; border-top: 1px solid var(--line); }
+      .skill-evidence strong { font-size: 15px; }
+      .journey { gap: 44px; }
+      .journey::before { left: 7px; }
+      .journey-item, .journey-item:nth-child(even) { width: 100%; margin: 0; grid-template-columns: 16px 1fr; gap: 14px; }
+      .journey-item .journey-card, .journey-item:nth-child(even) .journey-card { order: 2; }
+      .journey-dot { grid-column: 1; grid-row: 1; }
+      .journey-card { grid-column: 2; grid-row: 1; }
+      .photo-break figure { flex-basis: 82vw; }
+      .contact { min-height: 760px; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .contact h2 { font-size: clamp(56px, 17vw, 82px); }
+      .contact .wrap { padding: 100px 0; }
+      .contact-action { width: 100%; min-width: 0; }
+      .contact-visual { height: 68svh; min-height: 480px; }
+      .footer-row { display: grid; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+      .reveal { opacity: 1; transform: none; }
+      .photo-break-scroll { overflow-x: auto; }
+      .photo-break-track { animation: none; }
+      .journey-dot { opacity: 1; transform: none; }
+      .journey-photo img, .journey-photo.journey-mark img { transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">本文へ移動</a>
+
+  <header class="nav-shell">
+    <div class="nav wrap">
+      <a class="brand" href="#top">KENTO KADUNO <span>鹿角 謙人</span></a>
+      <nav class="nav-links" id="nav-links" aria-label="メインナビゲーション">
+        <a href="#vision">Vision</a>
+        <a href="#approach">Approach</a>
+        <a href="#projects">Projects</a>
+        <a href="#journey">Journey</a>
+        <a class="nav-contact" href="#contact">Contact ↗</a>
+      </nav>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-links">Menu</button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="hero-grid">
+        <div class="hero-copy reveal">
+          <p class="kicker">01 / Who I am</p>
+          <h1 class="hero-name" id="hero-title">Kento<br>Kaduno<span class="jp">鹿角 謙人</span></h1>
+          <p class="hero-lead">生命科学を学び、テクノロジーをつくり、事業として届ける。健康寿命を支える社会を目指して、領域の境界を越えて動く学生です。</p>
+          <div class="hero-meta">
+            <span>学生 / Student</span>
+            <span>長岡技術科学大学 物質生物工学分野 3年</span>
+          </div>
+          <div class="socials" aria-label="ソーシャルリンク（URL設定予定）">
+            <a href="#contact" aria-label="Instagram（URL設定予定）" title="Instagram URLは公開前に設定"><img src="https://cdn.simpleicons.org/instagram/ffffff" alt=""></a>
+            <a href="#contact" aria-label="Facebook（URL設定予定）" title="Facebook URLは公開前に設定"><img src="https://cdn.simpleicons.org/facebook/ffffff" alt=""></a>
+          </div>
+        </div>
+        <figure class="hero-photo reveal">
+          <img src="./images/profile/hero-kento-kaduno.png" alt="正面を向く鹿角謙人">
+          <figcaption class="photo-index">Portrait / 2026</figcaption>
+        </figure>
+      </div>
+      <span class="scroll-cue" aria-hidden="true">Scroll to explore</span>
+    </section>
+
+    <section class="vision" id="vision" aria-labelledby="vision-title">
+      <div class="vision-grid">
+        <div class="vision-copy reveal">
+          <p class="section-label">02 / Where I am going</p>
+          <h2 class="vision-title" id="vision-title">最期まで、<br>健康に生きられる<br>社会へ。</h2>
+          <p class="vision-lead">健康であることは、自分の人生を自分で選び続けるための土台です。病気になってから治すだけではなく、老化そのものを理解し、誰もが長く自分らしく生きられる時間を増やしたいと考えています。</p>
+          <div class="vision-points">
+            <article class="vision-point">
+              <h3>VISION</h3>
+              <p>研究によって老化の仕組みへ近づき、その知見を生活の中で使える形へ変える。健康寿命を延ばす研究と、今ある健康を守る実装の両方から、最期まで健やかに過ごせる社会を目指します。</p>
+            </article>
+            <article class="vision-point">
+              <h3>WHY ME</h3>
+              <p>出発点は、幼い頃から抱いてきた「人はなぜ老い、死ぬのか」という問いでした。生命科学を学ぶ中で、iPS細胞や細胞リプログラミング、老化研究へと関心が広がっています。</p>
+            </article>
+            <article class="vision-point">
+              <h3>WHY NOW</h3>
+              <p>老化研究の成果が社会へ届くまでには長い時間がかかります。未来を待つ間にも、今を生きる人の選択を少し良くしたい。だから研究と並行して、ITと事業による実装にも取り組んでいます。</p>
+            </article>
+          </div>
+        </div>
+        <figure class="vision-photo reveal">
+          <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&amp;fit=crop&amp;w=1600&amp;q=86" alt="研究室で対話する研究者たちのイメージ写真">
+          <figcaption class="photo-caption">Researching the future / Image placeholder</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="approach" id="approach" aria-labelledby="approach-title">
+      <div class="wrap">
+        <div class="approach-intro reveal">
+          <p class="kicker">03 / How I move</p>
+          <h2 id="approach-title">One vision.<br>Multiple approaches.</h2>
+          <p>目指す未来から逆算すると、研究だけでも、ITだけでも、事業だけでも足りない。異なる専門性をつなぎ、社会へ届く形までつくることを、自分の役割にしています。</p>
+        </div>
+        <div class="approach-type reveal">
+          <div class="approach-word"><span class="num">01</span><strong>RESEARCH</strong><span class="jp">生命科学から、人が老いる仕組みを深く理解する。長い時間軸で、未来の選択肢を増やす。</span></div>
+          <div class="approach-word"><span class="num">02</span><strong>TECHNOLOGY</strong><span class="jp">研究や身体のデータを、毎日の行動につながるプロダクトへ翻訳する。</span></div>
+          <div class="approach-word"><span class="num">03</span><strong>BUSINESS</strong><span class="jp">価値が一部の人に留まらず、必要とする人へ継続的に届く仕組みをつくる。</span></div>
+          <div class="approach-logic" aria-label="バックキャスティングとフォワードキャスティングが同じ未来へ合流する考え方">
+            <article class="logic-card">
+              <img src="./images/concept/contact-dawn.png" alt="目指す未来を象徴する夜明け前の海">
+              <div class="logic-copy"><span>BACKCASTING / 未来から考える</span><h3>健康寿命を支える社会から、今やるべきことを逆算する。</h3><p>目指す社会の姿を先に置き、社会実装、事業、テクノロジー、研究へと必要な手段をたどります。</p></div>
+            </article>
+            <div class="logic-meet" aria-hidden="true">ONE<br>VISION</div>
+            <article class="logic-card">
+              <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&amp;fit=crop&amp;w=1400&amp;q=84" alt="現在の学びを象徴する研究風景">
+              <div class="logic-copy"><span>FORWARD CASTING / 現在から積み上げる</span><h3>今ある専門性と経験を、ひとつずつ社会へつなげる。</h3><p>生命科学を学び、ITで形にし、事業として届ける。現在の延長線を、同じVisionへ合流させます。</p></div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="projects-section" id="projects" aria-labelledby="projects-title">
+      <div class="wrap section-head reveal">
+        <div><p class="section-label">04 / What I am building</p><h2 id="projects-title">Projects</h2></div>
+        <p>手を動かして得た知見を、次の問いと実装へ。過去の素材開発から、現在のヘルスケア事業へつながっています。</p>
+      </div>
+      <article class="project reveal">
+        <figure class="project-photo">
+          <img src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&amp;fit=crop&amp;w=1800&amp;q=86" alt="素材開発を行う手元のイメージ写真">
+        </figure>
+        <div class="project-copy">
+          <span class="project-no">PROJECT 01 / PAST WORK</span>
+          <div class="project-brand"><img class="project-mark" src="./images/brand/cownect-icon.png" alt=""><h3>COWNECT</h3></div>
+          <p class="project-role">素材開発責任者（正式表記は公開前確認）</p>
+          <p class="project-statement">酪農経営の正常化を目指し、行き場のない脱脂粉乳からレザー風素材をつくる。</p>
+          <a class="text-link" href="https://adv.hokkaido-np.co.jp/pr/donan-bizidea/" target="_blank" rel="noopener noreferrer">VIEW PROJECT ↗</a>
+        </div>
+      </article>
+      <article class="project reveal">
+        <figure class="project-photo">
+          <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&amp;fit=crop&amp;w=1800&amp;q=86" alt="プロジェクトチームで議論するイメージ写真">
+        </figure>
+        <div class="project-copy">
+          <span class="project-no">PROJECT 02 / NOW</span>
+          <div class="project-brand"><img class="project-mark" src="./images/brand/felsmata-icon.png" alt=""><h3>FELSMATA</h3></div>
+          <p class="project-role">代表 / Product Builder</p>
+          <p class="project-statement">研究成果や身体データを、今日から選べる小さな行動へ。健康寿命を延ばす仕組みを、生活者のそばからつくる。</p>
+          <a class="text-link" href="#contact" title="FELSMATAの公開URL確定後に差し替え">VIEW PROJECT ↗</a>
+        </div>
+      </article>
+    </section>
+
+    <div class="photo-break reveal" aria-label="活動風景の横スクロールギャラリー">
+      <div class="photo-break-head"><span>Scenes from the work</span><span class="photo-break-hint">Hover to pause</span></div>
+      <div class="photo-break-scroll" id="photo-scroll" tabindex="0">
+        <div class="photo-break-track">
+          <div class="photo-group">
+            <figure><img src="./images/projects/cownect/cownect-team-01.jpg" alt="COWNECTのメンバー"></figure>
+            <figure><img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&amp;fit=crop&amp;w=760&amp;q=80" alt="チームで開発するイメージ写真"></figure>
+            <figure><img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&amp;fit=crop&amp;w=760&amp;q=80" alt="研究活動のイメージ写真"></figure>
+            <figure><img src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&amp;fit=crop&amp;w=760&amp;q=80" alt="登壇のイメージ写真"></figure>
+            <figure><img src="./images/journey/2004-hakodate-city.jpg" alt="函館・元町地区の街並み"></figure>
+          </div>
+          <div class="photo-group" aria-hidden="true">
+            <figure><img src="./images/projects/cownect/cownect-team-01.jpg" alt=""></figure>
+            <figure><img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&amp;fit=crop&amp;w=760&amp;q=80" alt=""></figure>
+            <figure><img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&amp;fit=crop&amp;w=760&amp;q=80" alt=""></figure>
+            <figure><img src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&amp;fit=crop&amp;w=760&amp;q=80" alt=""></figure>
+            <figure><img src="./images/journey/2004-hakodate-city.jpg" alt=""></figure>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="news-section light-section" id="news" aria-labelledby="news-title">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div><p class="section-label">05 / Editorial</p><h2 id="news-title">News</h2></div>
+        </div>
+        <div class="news-list reveal">
+          <details class="news-entry" data-news-slug="school-letter-221">
+            <summary class="news-item"><time class="news-date">2026.03</time><span class="news-cat">PROFILE</span><span class="news-title">函館高専「学校だより 第221号」に寄稿が掲載されました</span><span class="news-arrow">＋</span></summary>
+            <div class="news-detail"><p>函館高専で過ごした5年間を振り返り、新しい環境へ進む決意を寄稿しました。高専で得た専門知識と経験を、自分の力で前へ進むための武器として生かしていきます。</p><a class="news-source" href="https://www.hakodate-ct.ac.jp/wp-content/uploads/2026/03/gakkoudayori_221.pdf" target="_blank" rel="noopener noreferrer">SOURCE / PDF ↗</a></div>
+          </details>
+          <details class="news-entry" data-news-slug="donan-business-idea-2026">
+            <summary class="news-item"><time class="news-date">2026.03</time><span class="news-cat">PROJECT</span><span class="news-title">道南ビジネスアイデアコンテスト2026にCOWNECTが掲載されました</span><span class="news-arrow">＋</span></summary>
+            <div class="news-detail"><p>行き場のない脱脂粉乳から独自の革風素材「コネクトレザー」をつくり、酪農・乳業界の収益改善と持続可能な仕組みづくりを目指す事業として紹介されています。</p><a class="news-source" href="https://adv.hokkaido-np.co.jp/pr/donan-bizidea/" target="_blank" rel="noopener noreferrer">SOURCE / OFFICIAL PAGE ↗</a></div>
+          </details>
+          <details class="news-entry" data-news-slug="gekkan-kosen-cownect">
+            <summary class="news-item"><time class="news-date">2025.07</time><span class="news-cat">MEDIA</span><span class="news-title">月刊高専にCOWNECTの素材開発と酪農課題への挑戦が掲載されました</span><span class="news-arrow">＋</span></summary>
+            <div class="news-detail"><p>COWNECTが生まれた背景、脱脂粉乳を素材へ変える開発、酪農家の課題解決へ向けたチームの取り組みが取材記事としてまとめられています。</p><a class="news-source" href="https://gekkan-kosen.com/22988/" target="_blank" rel="noopener noreferrer">SOURCE / ARTICLE ↗</a></div>
+          </details>
+          <details class="news-entry" data-news-slug="gcon-2024-award">
+            <summary class="news-item"><time class="news-date">2025.01</time><span class="news-cat">AWARD</span><span class="news-title">高専GCON2024でCOWNECTが優秀賞を受賞しました</span><span class="news-arrow">＋</span></summary>
+            <div class="news-detail"><p>酪農業界の不安定な経営状況に対し、革風素材の開発によって課題解決を図る提案が評価され、函館高専のCOWNECTが優秀賞を受賞しました。</p><a class="news-source" href="https://www.hakodate-ct.ac.jp/2025/01/07/%E7%AC%AC3%E5%9B%9E%E9%AB%98%E5%B0%82girls-sdgsxtechnology-contest%E9%AB%98%E5%B0%82gcon2024%E3%81%A7%E6%9C%AC%E6%A0%A1%E3%83%81%E3%83%BC%E3%83%A0cownect%E3%81%8C%E5%84%AA%E7%A7%80%E8%B3%9E/" target="_blank" rel="noopener noreferrer">SOURCE / HAKODATE KOSEN ↗</a></div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="skills-section light-section" id="skills" aria-labelledby="skills-title">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div><p class="section-label">06 / What I can do</p><h2 id="skills-title">Capabilities</h2></div>
+          <p>人に教えること、デジタルで形にすること、情報をわかりやすく届けること。学びと実践の中で磨いてきた三つの領域です。</p>
+        </div>
+        <div class="skills-list reveal">
+          <article class="skill-row">
+            <span class="skill-num">01</span><h3 class="skill-name">EDUCATION</h3>
+            <div class="skill-evidence"><p><strong>TOEIC 905 / 英語学習伴走</strong>200–300点台から550点へ。学習支援、教材制作、プレゼンテーション。</p></div>
+          </article>
+          <article class="skill-row">
+            <span class="skill-num">02</span><h3 class="skill-name">TECHNOLOGY</h3>
+            <div class="skill-evidence"><p><strong>Prototype / AI / Product</strong>仮説を画面に落とし、触れるプロトタイプまでつくる。ユーザー検証と改善を回す。</p></div>
+          </article>
+          <article class="skill-row">
+            <span class="skill-num">03</span><h3 class="skill-name">DESIGN</h3>
+            <div class="skill-evidence"><p><strong>Visual / Story / Presentation</strong>複雑な構想を、伝わる構成とビジュアルへ。LP、資料、プロダクト体験を設計する。</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="journey-section light-section" id="journey" aria-labelledby="journey-title">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div><p class="section-label">07 / Where I've been</p><h2 id="journey-title">Journey</h2></div>
+          <p>函館で科学を学び、素材開発を通して社会実装に触れ、長岡で生命科学と事業をつないでいる。今の活動につながる転機を、写真とともに振り返ります。</p>
+        </div>
+        <div class="journey">
+          <article class="journey-item reveal"><div class="journey-card"><div class="journey-photo"><img src="./images/journey/2004-hakodate-city.jpg" alt="函館・元町地区の街並み"></div><div class="journey-copy"><time>2004 / HAKODATE</time><h3>函館で生まれる</h3><p>北海道函館市で生まれ、海とものづくりの近くで育つ。</p></div></div><span class="journey-dot" aria-hidden="true"></span></article>
+          <article class="journey-item reveal"><div class="journey-card"><div class="journey-photo"><img src="./images/journey/hakodate-kosen-campus.jpg" alt="函館工業高等専門学校の校舎"></div><div class="journey-copy"><time>HAKODATE KOSEN</time><h3>函館高専へ進学</h3><p>物質環境工学科で化学、生物、材料を学び、研究とものづくりの基礎を培う。</p></div></div><span class="journey-dot" aria-hidden="true"></span></article>
+          <article class="journey-item reveal"><div class="journey-card"><div class="journey-photo"><img src="./images/projects/cownect/cownect-team-01.jpg" alt="COWNECTのメンバー"></div><div class="journey-copy"><time>COWNECT</time><h3>素材開発に参画</h3><p>脱脂粉乳から革風素材を開発し、研究を社会へ届ける難しさと面白さを知る。</p></div></div><span class="journey-dot" aria-hidden="true"></span></article>
+          <article class="journey-item reveal"><div class="journey-card"><div class="journey-photo"><img src="./images/journey/nagaoka-university-campus.jpg" alt="長岡技術科学大学のキャンパス"></div><div class="journey-copy"><time>2026 / NAGAOKA</time><h3>長岡技術科学大学へ編入</h3><p>物質生物工学分野で学び、老化、iPS細胞、健康寿命への関心を深める。</p></div></div><span class="journey-dot" aria-hidden="true"></span></article>
+          <article class="journey-item reveal"><div class="journey-card"><div class="journey-photo journey-mark"><img src="./images/brand/felsmata-icon.png" alt="FELSMATA"></div><div class="journey-copy"><time>NOW / FELSMATA</time><h3>FELSMATAを立ち上げる</h3><p>研究、テクノロジー、事業を横断し、健康寿命を支える未来を現在の生活へ実装する活動を始める。</p></div></div><span class="journey-dot" aria-hidden="true"></span></article>
+        </div>
+        <p class="mock-note">写真出典：函館・みなみ北海道観光ガイド、函館工業高等専門学校、道南ビジネスアイデアコンテスト2026、長岡技術科学大学。公開利用条件は本番実装前に再確認します。</p>
+      </div>
+    </section>
+
+    <section class="contact" id="contact" aria-labelledby="contact-title">
+      <div class="wrap reveal">
+        <div class="contact-grid">
+          <div>
+            <p class="kicker">08 / Let's work together</p>
+            <h2 id="contact-title">Let's create<span>the next possibility.</span></h2>
+            <p class="contact-intro">研究、技術、事業の境界にある、まだ名前のない可能性を一緒に考えたい。事業連携、お仕事、取材・登壇など、まずはメールでご連絡ください。</p>
+            <a class="contact-action" href="mailto:contact@example.com"><span>CONTACT BY EMAIL</span><span>↗</span></a>
+            <div class="contact-meta"><span>EMAIL / 公開用アドレス設定予定</span><span>通常3営業日以内に返信します（返信目安は公開前確認）</span></div>
+            <p class="mock-note">※ 公開用メールアドレス確定後に、このボタンと表示を差し替えます。</p>
+          </div>
+          <figure class="contact-visual"><img src="./images/concept/contact-dawn.png" alt="夜明け前の静かな海岸"></figure>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer-row"><span>© 2026 Kento Kaduno</span><span>Research × Technology × Business</span><span>Hakodate → Nagaoka → Future</span></div>
+  </footer>
+
+  <script>
+    const menuButton = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    menuButton.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      menuButton.setAttribute('aria-expanded', String(isOpen));
+      menuButton.textContent = isOpen ? 'Close' : 'Menu';
+      document.body.classList.toggle('menu-open', isOpen);
+    });
+
+    navLinks.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        menuButton.setAttribute('aria-expanded', 'false');
+        menuButton.textContent = 'Menu';
+        document.body.classList.remove('menu-open');
+      });
+    });
+
+    document.querySelectorAll('.news-entry').forEach((entry) => {
+      entry.addEventListener('toggle', () => {
+        if (!entry.open) return;
+        document.querySelectorAll('.news-entry[open]').forEach((other) => {
+          if (other !== entry) other.open = false;
+        });
+      });
+    });
+
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduceMotion) {
+      document.querySelectorAll('.reveal').forEach((item) => item.classList.add('is-visible'));
+    } else {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      document.querySelectorAll('.reveal').forEach((item) => observer.observe(item));
+    }
+  </script>
+</body>
+</html>
