@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "check": "node scripts/check-site.mjs",
-    "dev": "wrangler dev",
-    "deploy": "npm run check && wrangler deploy"
+    "dev": "wrangler pages dev public",
+    "deploy": "npm run check && wrangler pages deploy public --project-name kento-kaduno-lp --branch main"
   },
   "devDependencies": {
     "wrangler": "^4.123.0"

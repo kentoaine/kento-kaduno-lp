@@ -3,13 +3,15 @@
 ## Phase 1: まず公開する
 
 - GitHubをサイトの原本にする
-- Cloudflare Workers BuildsをGitHubへ接続する
+- Cloudflare Pagesを本番配信先にする
 - 写真は `public/images/`、ページは `public/index.html` で管理する
 - 修正はCodexへ日本語で依頼し、差分を確認してGitHubへpushする
 
 この段階は構成・文章・写真を詰めている現在に向いています。CMSを先に作り込まず、変更箇所が固まってから管理画面を導入します。
 
-Cloudflare移行前はGitHub Pagesを確認用URLとして使用します。Cloudflare移行後はWeb Analyticsを有効にし、閲覧数、参照元、表示速度を確認します。
+本番URLはCloudflare Pages、GitHub Pagesは予備・確認用URLとして使用します。Cloudflare DashboardでWeb Analyticsを有効にし、閲覧数、参照元、表示速度を確認します。
+
+更新時はGitHubへpushした後、ローカルで `npm run deploy` を実行します。将来、完全自動化する場合はCloudflare Pages用のAPIトークンをGitHub ActionsのSecretへ登録し、mainへのpushをデプロイの契機にします。
 
 ## Phase 2: Newsと画像をGUI化する
 
@@ -21,7 +23,7 @@ Cloudflare移行前はGitHub Pagesを確認用URLとして使用します。Clou
 
 日本語GUIを優先するならmicroCMS、柔軟な画像管理を優先するならSanityなどが候補です。CMS更新時はCloudflare Deploy Hookで再公開できます。Cloudflareだけで完結させる場合はD1・R2と専用管理画面が必要になり、初期開発と保守が増えます。
 
-Cloudflare公式 Deploy Hooks: https://developers.cloudflare.com/workers/ci-cd/builds/deploy-hooks/
+Cloudflare公式 Pages Web Analytics: https://developers.cloudflare.com/pages/how-to/web-analytics/
 
 ## 役割分担
 

@@ -1,8 +1,10 @@
 # Kento Kaduno Personal LP
 
-鹿角謙人の個人LP専用リポジトリです。`public/` をCloudflare Workers Static Assetsで配信します。
+鹿角謙人の個人LP専用リポジトリです。`public/` をCloudflare Pagesで配信します。
 
-公開確認URL: https://kentoaine.github.io/kento-kaduno-lp/
+本番URL: https://kento-kaduno-lp.pages.dev/
+
+予備・確認URL: https://kentoaine.github.io/kento-kaduno-lp/
 
 ## 日常の更新
 
@@ -10,7 +12,7 @@
 2. `public/index.html` の文章・画像パスを変更する
 3. `npm run check` でリンク切れを確認する
 4. GitHubへpushする
-5. 現在はGitHub Pagesで自動公開し、確認後にCloudflare Workers Buildsへ接続する
+5. `npm run deploy` でCloudflare Pagesへ反映する（GitHub Pagesもpush時に更新）
 
 ## ローカル確認
 
@@ -19,15 +21,17 @@ npm install
 npm run dev
 ```
 
-## Cloudflareへの初回接続
+## Cloudflareへの更新
 
-1. Cloudflare Dashboardの Workers & Pages → Create application → Import a repository を選ぶ
-2. GitHubの `kentoaine/kento-kaduno-lp` を選び、Worker名を `kento-kaduno-lp` に合わせる
-3. Build commandは空欄、Deploy commandは `npx wrangler deploy`
-4. 初回公開後に独自ドメインを接続する
-5. Cloudflare Web Analyticsを有効化する
+```bash
+npm install
+npx wrangler login
+npm run deploy
+```
 
-Cloudflare公式: https://developers.cloudflare.com/workers/ci-cd/builds/git-integration/
+Cloudflare Dashboardの Workers & Pages → `kento-kaduno-lp` → Metrics からWeb Analyticsを有効化できます。有効化後、もう一度 `npm run deploy` を実行すると解析用スクリプトが自動挿入されます。
+
+Cloudflare公式: https://developers.cloudflare.com/pages/how-to/web-analytics/
 
 ## フォルダ
 

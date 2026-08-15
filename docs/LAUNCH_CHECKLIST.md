@@ -51,10 +51,10 @@
 ## 公開設定
 
 - [x] GitHub: kentoaine / 公開リポジトリ
-- [ ] Cloudflareの所有アカウント
+- [x] Cloudflareの所有アカウント
 - [ ] 独自ドメイン候補
-- [ ] 本番URL
+- [x] 本番URL: https://kento-kaduno-lp.pages.dev/
 - [ ] Google Search Console登録
-- [x] アクセス解析: Cloudflare Web AnalyticsをCloudflare移行時に有効化
+- [ ] アクセス解析: Cloudflare DashboardでWeb Analyticsを有効化し、再デプロイ
 - [x] プライバシーポリシーは現段階では設置しない
 - [x] GitHub Pages用のOGPタイトル、説明文、URL
