@@ -14,6 +14,8 @@ public/images/
 └── gallery/              研究・登壇・イベント・日常の追加写真
 ```
 
+高解像度の元画像は、GitHubへ公開しない `source-images/` に保管します。LPが参照するのは `public/images/` 内の軽量化済みWebPだけです。
+
 ## ファイル名のルール
 
 - 半角英数字とハイフンのみを使う
@@ -30,7 +32,7 @@ profile/vision-kento-kaduno-lab.webp
 projects/cownect/cownect-material-sheet-01.webp
 projects/cownect/cownect-development-01.webp
 projects/felsmata/felsmata-team-meeting-01.webp
-journey/2004-hakodate-city-01.webp
+journey/hakodate-city-01.webp
 gallery/2026-08-it-essa-stage-01.webp
 ```
 
@@ -44,7 +46,7 @@ gallery/2026-08-it-essa-stage-01.webp
 | Forward casting | 現在の学習・研究・開発風景 | `concept/forwardcasting-current-work.webp` | 横 16:9 |
 | COWNECT | 脱脂粉乳、素材、開発中の手元 | `projects/cownect/cownect-development-01.webp` | 横 16:9 |
 | FELSMATA | ミーティング、事業づくり、サービス利用場面 | `projects/felsmata/felsmata-project-01.webp` | 横 16:9 |
-| Journey・函館 | 本人に関係する函館の街並み | `journey/2004-hakodate-city-01.webp` | 横 4:3〜16:9 |
+| Journey・函館 | 本人に関係する函館の街並み | `journey/hakodate-city-01.webp` | 横 4:3〜16:9 |
 | Journey・函館高専 | 校舎または在学時の活動 | `journey/hakodate-kosen-campus-01.webp` | 横 4:3〜16:9 |
 | Journey・長岡 | 大学または長岡での活動 | `journey/nagaoka-university-01.webp` | 横 4:3〜16:9 |
 | Gallery | 研究、登壇、イベント、日常 | `gallery/YYYY-MM-DD-subject-01.webp` | 横 16:10推奨 |

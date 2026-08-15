@@ -5,26 +5,26 @@
 ## 基本プロフィール
 
 - [ ] 日本語氏名の正式表記
-- [ ] 英字氏名の正式表記: Kento Kaduno
-- [ ] 現在の所属、学年、専攻の正式名称
+- [x] 英字氏名の正式表記: Kento Kaduno
+- [x] 現在の所属: 長岡技術科学大学 物質生物工学分野3年／技術革新フロンティアコース
 - [ ] 肩書き（学生／代表／素材開発責任者など）の優先順位
 - [ ] 50字、120字、300字のプロフィール
 - [ ] 公開してよい居住地・活動拠点
 
 ## リンク
 
-- [ ] Instagramの公開URL
-- [ ] Facebookの公開URL
-- [ ] COWNECTの公式URL
-- [ ] FELSMATAの公式URL
+- [x] Instagram: https://www.instagram.com/kaduken_235/
+- [x] Facebook: https://www.facebook.com/profile.php?id=61590224668793
+- [x] COWNECT: https://turquoise967901.studio.site/
+- [x] FELSMATA: https://kentoaine.github.io/FELSMATA_LP/
 - [ ] ニュース4件の公開継続可否と正式リンク
 - [ ] 掲載したい取材記事、登壇資料、動画
 
 ## 問い合わせ
 
-- [ ] 公開用メールアドレス
-- [ ] 電話番号を掲載するか（原則は非掲載を推奨）
-- [ ] 問い合わせ方法: メール／外部フォーム／サイト内フォーム
+- [x] 公開用メールアドレス: 10311kaduken@gmail.com
+- [x] 電話番号は掲載しない
+- [x] 問い合わせ方法: メールアプリを開くボタン
 - [ ] 受けたい相談: 事業連携、仕事、取材、登壇、その他
 - [ ] 返信目安を記載するか
 - [ ] スパム対策が必要な場合のTurnstile導入
@@ -45,16 +45,16 @@
 - [ ] 写真の掲載許可・クレジット
 - [ ] COWNECTロゴの最新版と利用許可
 - [ ] FELSMATAロゴの最新版
-- [ ] favicon（正方形）
-- [ ] SNS共有用OG画像（1200×630px）
+- [x] favicon: KKモノグラム
+- [x] SNS共有用OG画像（1200×630px）
 
 ## 公開設定
 
-- [ ] GitHubの所有アカウントとリポジトリ公開範囲
+- [x] GitHub: kentoaine / 公開リポジトリ
 - [ ] Cloudflareの所有アカウント
 - [ ] 独自ドメイン候補
 - [ ] 本番URL
 - [ ] Google Search Console登録
-- [ ] アクセス解析を入れるか（Cloudflare Web Analyticsなど）
-- [ ] プライバシーポリシーが必要か
-- [ ] OGPタイトル、説明文、URL
+- [x] アクセス解析: Cloudflare Web AnalyticsをCloudflare移行時に有効化
+- [x] プライバシーポリシーは現段階では設置しない
+- [x] GitHub Pages用のOGPタイトル、説明文、URL
