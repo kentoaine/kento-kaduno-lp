@@ -9,6 +9,8 @@
 
 この段階は構成・文章・写真を詰めている現在に向いています。CMSを先に作り込まず、変更箇所が固まってから管理画面を導入します。
 
+Cloudflare移行前はGitHub Pagesを確認用URLとして使用します。Cloudflare移行後はWeb Analyticsを有効にし、閲覧数、参照元、表示速度を確認します。
+
 ## Phase 2: Newsと画像をGUI化する
 
 推奨は「Cloudflareでサイト配信＋ヘッドレスCMSでNewsと画像を管理」です。管理対象は次の3種類に限定します。
